@@ -21,6 +21,7 @@ def download_vid_high_quality(video_url_list):
 
         try:
             video.download(vid_save_dir)
+            print("Downloading")
         except:
             print("Failed to download video")
 
