@@ -1,4 +1,5 @@
-# YouTube Audio and Video Downloader Documentation
+# YouTube Audio and Video Downloader 
+# Documentation
 
 ## Table of Contents
 1. Introduction
@@ -33,8 +34,10 @@ To use this YouTube Audio and Video Downloader, you'll need the following prereq
 pip install pytube
 ```
 
-3. Download the script from the GitHub repository or simply copy the `main.py` file to your local machine.
-
+3. clone the script from the GitHub repository or simply copy the `main.py` file to your local machine.
+```bash
+git clone https://github.com/Rishi-k-s/youtube_downloader.git
+```
 ## 4. Usage
 
 To use the YouTube Audio and Video Downloader, follow these steps:
