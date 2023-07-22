@@ -1,5 +1,5 @@
 from pytube import YouTube
-
+import math
 vid_save_dir = "videos"
 audio_save_dir = "audio"
 
@@ -30,12 +30,13 @@ def download_vid_low_quality(video_url_list):
     for eachUrlFromList in video_url_list:
         video = YouTube(eachUrlFromList)
         video = video.streams.get_highest_resolution()
+        video_resolution = video.resolution
         video_name = video.default_filename
-        video_size = video.filesize
+        video_size = math.floor(video.filesize)/10**6
         print("Video Details")
         print("-------------")
-        print("Name: {}\nSize:{}".format(
-            video_name,video_size
+        print("Name: {}\nSize:{} Mb\nResolution:{}".format(
+            video_name,video_size,video_resolution
         ))
 
         try:
@@ -69,7 +70,7 @@ while True:
         if(get_res == 1):
             download_vid_high_quality(urlListFile)
         elif(get_res == 2):
-            download_vid_low_quality()
+            download_vid_low_quality(urlListFile)
 
     elif(get_type == 2):
-        download_audio()
+        download_audio(urlListFile)
