@@ -15,7 +15,7 @@
 
 ## 1. Introduction
 
-Welcome to the YouTube Audio and Video Downloader! This Python script allows you to download audio and video files from YouTube using their video URLs. The media files will be saved in the same folder as the code. To get started, you need to install the `pytube` library and follow the command line instructions provided below.
+Welcome to the YouTube Audio and Video Downloader! This Python script allows you to download audio and video files from YouTube using their video URLs. To get started, you need to install the `pytube` library and follow the command line instructions provided below.
 
 ## 2. Requirements
 
