@@ -1,5 +1,6 @@
 from pytube import YouTube
 import math
+import os
 vid_save_dir = "videos"
 audio_save_dir = "audio"
 
@@ -16,8 +17,7 @@ def download_vid_high_quality(video_url_list):
         print("Video Details")
         print("-------------")
         print("Name: {}\nSize:{}".format(
-            video_name,video_size
-        ))
+            video_name,video_size))
 
         try:
             video.download(vid_save_dir)
@@ -47,16 +47,30 @@ def download_vid_low_quality(video_url_list):
 
         print("video was downloaded successfully")
 
-def download_audio(video_url):
-    video = YouTube(video_url)
-    audio = video.streams.filter(only_audio = True).first()
+def download_audio(audio_url_list):
+    for eachUrlFromList in audio_url_list:
+        video = YouTube(eachUrlFromList)
+        audio = video.streams.filter(only_audio = True).first()
+        # audio_bitrate = audio.bitrate
+        # audio_name = audio.default_filename
+        # audio_size =  (math.floor(audio.filesize)/8000)
 
-    try:
-        audio.download(audio_save_dir)
-    except:
-        print("Failed to download audio")
+        # print("Audio Details")
+        # print("-------------")
+        # print("(Dont mind the .mp4 extension)")
+        # print("Name: {}\nSize:{} Mb\nBitrate:{}".format(
+        #     audio_name,audio_size,audio_bitrate
+        # ))
 
-    print("audio was downloaded successfully")
+        try:
+            out_file = video.download(output_path=audio_save_dir)
+            base, ext = os.path.splitext(out_file)
+            new_file = base + '.mp3'
+            os.rename(out_file, new_file)
+        except:
+            print("Failed to download audio")
+
+        print("audio was downloaded successfully")
 
 while True:
     print("[1] Download video")
